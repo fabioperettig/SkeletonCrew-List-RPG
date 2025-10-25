@@ -1,6 +1,18 @@
 import java.util.List;
 
 public class Wizard implements Character{
+
+    private String name;
+
+    public Wizard(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+
+
     @Override
     public void introduce() {
         List<String> intro = List.of(
