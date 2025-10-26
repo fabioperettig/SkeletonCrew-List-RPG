@@ -4,7 +4,8 @@ public interface Character {
     void goal();
     void cost();
     void atack();
-    void Earnings();
-    void Amount();
+    void earnings();
+    void amount();
+    void levelUp();
 
 }
