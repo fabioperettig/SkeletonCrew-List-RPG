@@ -7,18 +7,33 @@ public class Warrior implements Character {
     private String name;
     private int level;
     private static final int LEVEL_MAX_INICIAL = 12; //constante global
-    private int amout;
+    private int amount = (int)(Math.random() * 250 +1);
+    private int cost = 15 * (int)(Math.random()*6+1);
 
     //constructor
     public Warrior(String name) {
         this.name = name;
         this. level = (int)(Math.random() * LEVEL_MAX_INICIAL +1);
-        this.amout = (int)(Math.random() * 250 +1);
 
     }
 
-    public String toString() { return name; }
-    public int getLevel() { return level;}
+    public int heroLevel() { return level;} //para chamar o level
+    public String toString() { return name; } //para chamar o nome
+
+    // para usar em métodos
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    // para usar em métodos
+    public int getCost() { return cost; }
+
+    // para usar em métodos
+    @Override
+    public int getLevel() {
+        return level;
+    }
 
     // Interface
     @Override
@@ -91,8 +106,6 @@ public class Warrior implements Character {
 
     @Override
     public void amount() {
-        System.out.printf("%n%s possui %d moedas.%n",name,amout);
-        System.out.println("${name} possui " + amout + "moedas.");
-        System.out.println("=================================");
+        System.out.printf("%s possui %d moedas.%n",name,amount);
     }
 }

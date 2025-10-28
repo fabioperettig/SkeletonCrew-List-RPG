@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -14,7 +13,7 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
     static boolean gameON;
     static String playerEscolha;
-    static int playerGold = 500;
+    private static int playerGold = 5000;
     static int day = 1;
     static int escolha;
 
@@ -29,16 +28,12 @@ public class Main {
         Wizard morthen = new Wizard("Morthen");
         Wizard velira = new Wizard("Velira");
 
-        List<Object> available = new ArrayList<>();
-        available.add(algalord);
-        available.add(baldrik);
-        available.add(serion);
-        available.add(kadaj);
-        available.add(eloria);
-        available.add(morthen);
-        available.add(velira);
+        List<Character> available = new ArrayList<>(List.of(
+                algalord, baldrik, serion, kadaj, eloria, morthen, velira
+        ));
 
-        List<Object> hired = new ArrayList<>();
+
+        List<Character> hired = new ArrayList<>();
 
         System.out.println("\nIniciar game? Sim | Não");
         playerEscolha = scanner.nextLine();
@@ -50,18 +45,30 @@ public class Main {
                 status();
                 System.out.println("contratar?");
                 playerEscolha = scanner.nextLine();
+
                 if (playerEscolha.equalsIgnoreCase("s")){
-                    algalord.introduce();
-                    algalord.cost();
-                    System.out.println("pagar?");
-                    playerEscolha=scanner.nextLine();
-                    if (playerEscolha.equalsIgnoreCase("s")){
-                        available.remove(algalord);
-                        hired.add(algalord);
+                    System.out.println("Escolha um dos aventureiros disponíveis: ");
+
+                    //imprime herois
+                    for (Character c : available) {
+
+                        System.out.println("– " + c.getName() +
+                                " | Classe: " + c.getClass().getName() +
+                                " | Level: " + c.getLevel());
+                    }
+
+                    playerEscolha = scanner.nextLine();
+                    Character contratado = HiringAdventurer.hire(available, playerEscolha);
+
+                    if (contratado != null){
+                        hired.add(contratado);
+                        available.remove(contratado);
+                        playerGold -= contratado.getCost();
                     }
 
                     System.out.println("Tribulação disponível: "+available);
                     System.out.println("Sua equipe: "+hired);
+                    System.out.println(playerGold);
                 }
 
                 gameON=false;
@@ -77,6 +84,10 @@ public class Main {
     public static void status(){
         System.out.printf("-- Dia: %d ----- Ouro: %d -----%n",day,playerGold);
         System.out.println("-------------------------------");
+    }
+
+    public int getPlayerGold(){
+        return playerGold;
     }
 
 }

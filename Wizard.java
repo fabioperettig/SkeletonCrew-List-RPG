@@ -7,6 +7,8 @@ public class Wizard implements Character{
     private String name;
     private int level;
     private static final int LEVEL_MAX_INICIAL = 12; //constante global
+    private int amount = (int)(Math.random() * 250 +1);
+    private int cost = 15 * (int)(Math.random()*6+1);
 
     public Wizard(String name) {
         this.name = name;
@@ -15,6 +17,12 @@ public class Wizard implements Character{
 
     public String toString() { return name; }
     public int getLevel() { return level; }
+    public int getCost() {return cost;}
+
+    @Override
+    public String getName() {
+        return name;
+    }
 
     // Interface
     @Override
@@ -64,12 +72,23 @@ public class Wizard implements Character{
 
     @Override
     public void cost() {
-        int cost = 15 * (int)(Math.random()*6+1);
         System.out.println(name + ": os custos para os meus serviços são " + cost + " moedas.");
     }
 
     @Override
     public void atack() {
+
+        int dano = level * (int)(Math.random()*7+1);
+
+        List<Runnable> ataques = new ArrayList<>();
+        ataques.add(() -> System.out.printf("%n%s ataca com destreza e causa %d de dano!",name,dano));
+        ataques.add(() -> System.out.printf("%n%s avança sobre o inimigo, causando-lhe %d de dano!",name,dano));
+        ataques.add(() -> System.out.printf("%nO inimigo recebeu um dano de %d graças a %s!",dano,name));
+        ataques.add(() -> System.out.printf("%n%d! Este é o dano causado por %s",dano, name));
+
+        int sorteioAtaque = (int)(Math.random()*ataques.size());
+
+        ataques.get(sorteioAtaque).run();
 
     }
 
@@ -80,7 +99,7 @@ public class Wizard implements Character{
 
     @Override
     public void amount() {
-
+        System.out.printf("%s possui %d moedas.%n",name,amount);
     }
 
 

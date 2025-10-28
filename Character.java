@@ -1,5 +1,7 @@
 public interface Character {
 
+    String getName();
+    int getLevel();
     void introduce();
     void goal();
     void cost();
@@ -8,4 +10,5 @@ public interface Character {
     void amount();
     void levelUp();
 
+    int getCost();
 }
