@@ -13,7 +13,7 @@ public class HiringAdventurer {
     public static Character hire (List<Character> available, String escolhido){
 
         Main playergold = new Main();//pegando variável da Classe Main
-        int playerGold = playergold.getPlayerGold();
+        double playerGold = playergold.getPlayerGold();
 
 
         for (Character c : available) {
