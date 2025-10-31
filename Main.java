@@ -15,26 +15,18 @@ public class Main {
     static String playerEscolha;
     static int playerEscolhaInt;
     private static String playerNome;
-    private static int playerGold = 5000;
+    private static int playerGold = 600;
     private static int valorObjetivo = 145000;
     static int day = 1;
     static int escolha;
 
     public static void main(String[] args) throws InterruptedException {
-
-        Working.availableWorks();
-
-        Warrior algalord = new Warrior("Algalord");
-        Warrior baldrik = new Warrior("Baldrik");
-        Warrior serion = new Warrior("Serion");
-
-        Wizard kadaj = new Wizard("Kadaj");
-        Wizard eloria = new Wizard("Eloria");
-        Wizard morthen = new Wizard("Morthen");
-        Wizard velira = new Wizard("Velira");
+        
 
         List<Character> available = new ArrayList<>(List.of(
-                algalord, baldrik, serion, kadaj, eloria, morthen, velira
+                HeroesCentral.getAlgalord(), HeroesCentral.getBaldrik(), HeroesCentral.getSerion(),
+                HeroesCentral.getFjord(), HeroesCentral.getKadaj(), HeroesCentral.getEloria(),
+                HeroesCentral.getMorthen(), HeroesCentral.getVelira()
         ));
 
 
@@ -48,8 +40,9 @@ public class Main {
             playerNome = scanner.nextLine();
 
             if (day == 1){
-                System.out.printf("%nOlá %s, seu objetivo é juntar %d moedas de ouro para comprar seu navio e sair explorando o mundo.%n",playerNome,valorObjetivo);
-                Thread.sleep(5000);
+                System.out.printf("%nOlá %s, seu objetivo é juntar %d moedas de ouro" +
+                        "para comprar seu navio e sair explorando o mundo.%n",playerNome,valorObjetivo);
+                Thread.sleep(3000);
             }
 
             gameON = true;
@@ -63,12 +56,17 @@ public class Main {
 
                 switch (playerEscolhaInt) {
                     case 1:
-                        System.out.println(Working.getWorkList());
-                        Working.choosenWork();
+                        WorkingClass.availableWorks();
+                        WorkingClass.choosenWork();
+                        System.out.println("Voce ganha 100");
+                        playerGold = playerGold + 100;
+                        status();
+
+                    case 2:
+                        System.out.println("Temos alguns aventureiros disponíveis hoje ");
                 }
 
                 if (playerEscolha.equalsIgnoreCase("s")){
-                    System.out.println("Escolha um dos aventureiros disponíveis: ");
 
                     //imprime herois
                     for (Character c : available) {

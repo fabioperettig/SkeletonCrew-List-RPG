@@ -13,11 +13,11 @@ public class Warrior implements Character {
     //constructor
     public Warrior(String name) {
         this.name = name;
-        this. level = (int)(Math.random() * LEVEL_MAX_INICIAL +1);
+        this. level = (int)(Math.random() * LEVEL_MAX_INICIAL + 1);
 
     }
 
-    public int heroLevel() { return level;} //para chamar o level
+    public int heroLevel() { return level; } //para chamar o level
     public String toString() { return name; } //para chamar o nome
 
     // para usar em métodos
@@ -48,20 +48,17 @@ public class Warrior implements Character {
                 "Sou " + name + ", forjado em batalhas e pago em sangue.",
                 "Se veio buscar glória, chegou tarde. Eu já peguei toda."
         );
-        int sortIntro = (int)(Math.random() * intro.size());
 
+        int sortIntro = (int)(Math.random() * intro.size());
         System.out.println(name + ": " + intro.get(sortIntro));
 
     }
 
-    @Override
-    public void levelUp() {
-        level++;
-        System.out.printf("%n%s subiu para o nível %d!%n",name,level);
-    }
+
 
     @Override
     public void goal() {
+
         List<String> goalList = List.of(
                 "Apenas preciso pagar uma velha dívida.",
                 "Quero saciar a sede da minha arma e me vangloriar sobre os corpos de meus inimigos!",
@@ -72,9 +69,10 @@ public class Warrior implements Character {
                 "Quero ver o topo do mundo e deixar o eco do meu nome por lá.",
                 "Meu único propósito é continuar de pé quando todos caírem."
         );
-        int sortGoal = (int)(Math.random() * goalList.size());
 
+        int sortGoal = (int)(Math.random() * goalList.size());
         System.out.println(name + ": " + goalList.get(sortGoal));
+
     }
 
     @Override
@@ -107,5 +105,11 @@ public class Warrior implements Character {
     @Override
     public void amount() {
         System.out.printf("%s possui %d moedas.%n",name,amount);
+    }
+
+    @Override
+    public void levelUp() {
+        level++;
+        System.out.printf("%n%s subiu para o nível %d!%n",name,level);
     }
 }
