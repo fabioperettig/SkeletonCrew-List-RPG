@@ -1,7 +1,8 @@
-import java.util.ArrayList;
+package com.fabioperettig.skeletoncrew.characters;
+
 import java.util.List;
 
-public class Elf implements Character{
+public class Elf implements Crew{
 
     private String name;
     private int level;
@@ -68,7 +69,7 @@ public class Elf implements Character{
     }
 
     @Override
-    public void atack() {
+    public void attack() {
 
     }
 

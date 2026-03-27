@@ -1,14 +1,16 @@
-public interface Character {
+package com.fabioperettig.skeletoncrew.characters;
+
+public interface Crew {
 
     String getName();
     int getLevel();
+    int getCost();
+
     void introduce();
     void goal();
     void cost();
-    void atack();
+    void attack();
     void earnings();
     void amount();
     void levelUp();
-
-    int getCost();
 }

@@ -1,3 +1,8 @@
+package com.fabioperettig.skeletoncrew.world;
+
+import com.fabioperettig.skeletoncrew.characters.Warrior;
+import com.fabioperettig.skeletoncrew.characters.Wizard;
+
 public class HeroesCentral {
 
     //Warriors

@@ -1,5 +1,8 @@
+package com.fabioperettig.skeletoncrew.services;
+
+import com.fabioperettig.skeletoncrew.characters.Crew;
+
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HiringAdventurer {
@@ -10,16 +13,11 @@ public class HiringAdventurer {
     static Scanner escolha = new Scanner(System.in);
 
 
-    public static Character hire (List<Character> available, String escolhido){
+    public static com.fabioperettig.skeletoncrew.characters.Crew hire (List<com.fabioperettig.skeletoncrew.characters.Crew> available, String escolhido, double playerGold){
 
-        Main playergold = new Main();//pegando variável da Classe Main
-        double playerGold = playergold.getPlayerGold();
-
-
-        for (Character c : available) {
+        for (Crew c : available) {
             if (c.getName().equalsIgnoreCase(escolhido)) {
 
-                //System.out.println("Você se aproxima de " + c.getName() + ".");
                 System.out.printf("%nVocê se aproxima de %s%n.",c.getName());
 
                 c.introduce();

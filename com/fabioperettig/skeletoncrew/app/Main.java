@@ -1,12 +1,18 @@
+package com.fabioperettig.skeletoncrew.app;
+import com.fabioperettig.skeletoncrew.characters.*;
+import com.fabioperettig.skeletoncrew.services.*;
+import com.fabioperettig.skeletoncrew.world.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Project under development. A simple RPG team hiring and management system.
+ * Project under development.
+ * A simple RPG team hiring and management system.
  *
  * @author Fabio Peretti Guimarães
- * @version alpha
+ * @version beta
  */
 public class Main {
 
@@ -16,21 +22,21 @@ public class Main {
     static int playerEscolhaInt;
     private static String playerNome;
     private static int playerGold = 600;
-    private static int valorObjetivo = 145000;
+    private static final int VALOR_OBJETIVO = 25000;
     static int day = 1;
     static int escolha;
 
     public static void main(String[] args) throws InterruptedException {
         
 
-        List<Character> available = new ArrayList<>(List.of(
+        List<Crew> available = new ArrayList<>(List.of(
                 HeroesCentral.getAlgalord(), HeroesCentral.getBaldrik(), HeroesCentral.getSerion(),
                 HeroesCentral.getFjord(), HeroesCentral.getKadaj(), HeroesCentral.getEloria(),
                 HeroesCentral.getMorthen(), HeroesCentral.getVelira()
         ));
 
 
-        List<Character> hired = new ArrayList<>();
+        List<Crew> hired = new ArrayList<>();
 
         System.out.println("\nIniciar game? Sim | Não");
         playerEscolha = scanner.nextLine();
@@ -41,7 +47,7 @@ public class Main {
 
             if (day == 1){
                 System.out.printf("%nOlá %s, seu objetivo é juntar %d moedas de ouro" +
-                        "para comprar seu navio e sair explorando o mundo.%n",playerNome,valorObjetivo);
+                        "para comprar seu navio e sair explorando o mundo.%n",playerNome,VALOR_OBJETIVO);
                 Thread.sleep(3000);
             }
 
@@ -56,6 +62,7 @@ public class Main {
 
                 switch (playerEscolhaInt) {
                     case 1:
+                        availableW(new WorkingClass().availableWorks());
                         WorkingClass.availableWorks();
                         WorkingClass.choosenWork();
                         System.out.println("Voce ganha 100");
@@ -69,7 +76,7 @@ public class Main {
                 if (playerEscolha.equalsIgnoreCase("s")){
 
                     //imprime herois
-                    for (Character c : available) {
+                    for (Crew c : available) {
 
                         System.out.println("– " + c.getName() +
                                 " | Classe: " + c.getClass().getName() +
@@ -77,7 +84,7 @@ public class Main {
                     }
 
                     playerEscolha = scanner.nextLine();
-                    Character contratado = HiringAdventurer.hire(available, playerEscolha);
+                    Crew contratado = HiringAdventurer.hire(available, playerEscolha, playerGold);
 
                     if (contratado != null){
                         hired.add(contratado);

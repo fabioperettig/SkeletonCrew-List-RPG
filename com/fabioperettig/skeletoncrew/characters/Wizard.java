@@ -1,8 +1,9 @@
-import java.util.List;
+package com.fabioperettig.skeletoncrew.characters;
+
 import java.util.List;
 import java.util.ArrayList;
 
-public class Wizard implements Character{
+public class Wizard implements Crew{
 
     private String name;
     private int level;
@@ -76,7 +77,7 @@ public class Wizard implements Character{
     }
 
     @Override
-    public void atack() {
+    public void attack() {
 
         int dano = level * (int)(Math.random()*7+1);
 

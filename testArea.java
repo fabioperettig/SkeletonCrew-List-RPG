@@ -1,3 +1,6 @@
+import com.fabioperettig.skeletoncrew.characters.Warrior;
+import com.fabioperettig.skeletoncrew.characters.Wizard;
+
 public class testArea {
 
     public static void main(String[] args) {

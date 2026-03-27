@@ -1,8 +1,9 @@
-import java.io.PrintStream;
+package com.fabioperettig.skeletoncrew.characters;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Warrior implements Character {
+public class Warrior implements Crew {
 
     private String name;
     private int level;
@@ -82,7 +83,7 @@ public class Warrior implements Character {
     }
 
     @Override
-    public void atack() {
+    public void attack() {
         int dano = level *(int)(Math.random()*7+1);
 
         //saídas de ataque
